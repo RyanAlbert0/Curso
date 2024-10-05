@@ -1,19 +1,11 @@
-<?php
+<?php 
     include('../Conexoes/conexao_estoque.php');
-    
-    $id = $_GET['id'];
-    
-    $sql_codigo = "SELECT * FROM itens WHERE ID = '$id'";
-    $resultado = $mysqli->query($sql_codigo);
-
-    $item = $resultado->fetch_assoc();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $id = $_POST['id'];
         $nome = $_POST['nome'];
         $quantidade = $_POST['quantidade'];
 
-        $sql_codigo = "UPDATE itens SET nome='$nome', quantidade='$quantidade' where id = '$id'";
+        $sql_codigo = "INSERT INTO itens (nome, quantidade) VALUES ('$nome', '$quantidade')";
 
         if($mysqli->query($sql_codigo) === TRUE){
             header('Location: index.php');
@@ -22,7 +14,6 @@
             echo 'Erro ao atualizar a tabela. Entre em contato com o administrador' . $mysqli->error;
         }
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -30,17 +21,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=h1, initial-scale=1.0">
-    <title>Editar Elementos</title>
+    <title>Adicionar Elementos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Editar Item</h1>
+    <h1>Adicionar Item</h1>
     <form action="" method='post'>
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
         <label for="">Nome</label>
-        <input type="text" name='nome' value="<?php echo $item['Nome']; ?>" required>
+        <input type="text" name='nome' required>
         <label for="">Quantidade</label>
-        <input type="number" name='quantidade' value="<?php echo $item['Quantidade']; ?>" required>
+        <input type="number" name='quantidade' required>
 
         <input type="submit" value='Save'>
     </form>

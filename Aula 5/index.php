@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php 
+   
+     ?>
     <h1>Padaria dos Sonhos</h1>
     <main class="container">
         <table>
@@ -30,14 +33,20 @@
                 echo '<tr class="corpo">';
                     echo '<td>' . $item['Nome'] . '</td>';
                     echo '<td>'. $item['Quantidade'] . '</td>';
-                    echo '<td> <a href="editar.php?id='. $item['ID'] . '">editar</a> </td>';
-                    echo '<td>deletar</td>';
+                    echo '<td> <a href="editar.php?id='. $item['Id'] . '">editar</a> </td>';
+                    echo '<td> <a href="deletar.php?id='. $item['Id'] . '">deletar</a> </td>';
                 echo '</tr>';
                 }    
             }
             
             ?>
-
+            <tr>
+                <td colspan='4' class='adic'>
+                    <?php
+                    echo '<a type="submit" class="add_txt" href="adicionar.php">+</a>'
+                    ?>
+                </td>
+            </tr>
         </table>
     </main>
     
