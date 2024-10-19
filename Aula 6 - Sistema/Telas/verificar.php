@@ -1,5 +1,5 @@
 <?php
-include_once('conexao.php');
+include('../../Conexoes/conexao_sistema.php');
 
 session_start();
 
@@ -14,13 +14,13 @@ if(isset($usuario) && isset($senha)){
     $quantidade_linhas = $sql_query->num_rows;
 
     if ($quantidade_linhas == 1){
-        $_SESSION['user'] = $usuario;
-        $_SESSION['pass'] = $senha;
+        $resultado = $sql_query->fetch_assoc();
+        $_SESSION['id'] = $resultado['id'];
         header('Location:painel.php');
     }
     else
     {
-        header('Location:index.php?error');
+        header('Location:login.php?error');
     }
 }
 
