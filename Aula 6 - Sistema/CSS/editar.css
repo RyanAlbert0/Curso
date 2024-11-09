@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Playpen Sans", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: lightblue;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 30px;
+    
+}
+
+.container {
+    background-color: whitesmoke;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    
+}
+
+h1 {
+
+    font-size: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+
+}
+
+input {
+
+    size: 20px;
+}

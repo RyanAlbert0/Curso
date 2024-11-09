@@ -1,16 +1,18 @@
 <?php 
     include('../../Conexoes/conexao_sistema.php');
     session_start();
-    $id = $_SESSION['id'];
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $nome = $_POST['nome'];
-        $quantidade = $_POST['quantidade'];
+        $user = $_POST['user'];
+        $pass = $_POST['pass'];
+        
 
-        $sql_codigo = "INSERT INTO itens (nome, quantidade, id_user) VALUES ('$nome', '$quantidade', '$id') ";
+        $sql_codigo = "INSERT INTO cliente (nome, usuario, senha) VALUES ('$nome', '$user', '$pass') ";
 
         if($mysqli->query($sql_codigo) === TRUE){
-            header('Location: painel.php');
+            $_SESSION['nome'] = $nome;
+            header('Location: painel.php?cadastrado=sim');
         }
         else{
             echo 'Erro ao atualizar a tabela. Entre em contato com o administrador' . $mysqli->error;
@@ -27,15 +29,17 @@
     <link rel="stylesheet" href="../CSS/adicionar.css">
 </head>
 <body>
-    <h1>Adicionar Item</h1>
+    <h1>Cadastrar Cliente</h1>
     <form action="" method='post'>
         <label for="">Nome</label>
         <input type="text" name='nome' required id='input1'>
-        <label for="">Quantidade</label>
-        <input type="number" name='quantidade' required id='input2'>
+        <label for="">Usuário</label>
+        <input type="text" name='user' required id='input2'>
+        <label for="">Senha</label>
+        <input type="text" name='pass' required id='input3'>
 
-        <input type="submit" value='Save'>
+        <input type="submit" value='Cadastrar'>
     </form>
-    <a href="painel.php"> Voltar </a>
+    <a href="login.php"> Voltar </a>
 </body>
 </html>

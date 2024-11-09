@@ -1,15 +1,30 @@
 <?php
-    include('../../Conexoes/conexao_sistema.php');
-    session_start();
-    $id = $_SESSION['id'];
-    $sql_codigo = "SELECT * FROM itens WHERE id='$id'";
-    $sql_codigo_usuario = "SELECT nome FROM cliente WHERE id='$id'";
-    $resultado = $mysqli->query($sql_codigo);
+//     include('../../Conexoes/conexao_sistema.php');
+//     if(!isset($_SESSION)){
+//         header("location: login.php?noaccount");
+    
+// }
+// else{
+    if($_GET['cadastrado'] == 'sim'){
+        $nome = $_SESSION['nome'];
+        $sql_codigo_usuario = "SELECT id FROM cliente WHERE nome = '$nome'";
+        $resultado_id = $mysqli->query($sql_codigo_usuario);
+        $conteudo = $resultado_id->fetch_assoc();
+        $id = $conteudo['id'];}
+        else{
+            $id = $_SESSION['id'];
+            
+            $resultado_nome = $mysqli->query($sql_codigo_usuario);
+            $nome_usuario = $resultado_nome->fetch_assoc();
+                $nome = $nome_usuario['nome'];
+        }
 
-    $resultado_nome = $mysqli->query($sql_codigo_usuario);
-    $nome_usuario = $resultado_nome->fetch_assoc();
-    $nome = $nome_usuario['nome'];
-?>
+    
+    $sql_codigo = "SELECT * FROM itens WHERE id_user='$id'";
+    
+    $resultado = $mysqli->query($sql_codigo);
+    session_start();
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +44,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wishlist</title>
+    <link rel="stylesheet" href="../CSS/painel.css">
 </head>
 <body>
 <h1>Carrinho - <?php echo $nome ?></h1>
@@ -61,5 +77,10 @@
             </tr>
         </table>
     </main>
+    <div>
+    <?php
+    echo '<a type="submit" class="log_out_btn" href="logout.php">Log Out</a>'
+    ?>
+    </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logar como Administrador</title>
+    <title>Logar na Padaria dos Sonhos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body class='d-flex justify-content-center align-items-center vh-100 bg-dark text-light' >
@@ -25,6 +25,7 @@
                     </div>
                     <div class='d-grid'>
                         <button type='submit' class="btn btn-outline-secondary">Log In</button>
+                        <a href="cadastrar.php" class="btn btn-outline-secondary">Criar conta</button>
                     </div>
                     </div>
                 </form>

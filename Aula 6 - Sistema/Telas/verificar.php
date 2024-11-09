@@ -16,7 +16,8 @@ if(isset($usuario) && isset($senha)){
     if ($quantidade_linhas == 1){
         $resultado = $sql_query->fetch_assoc();
         $_SESSION['id'] = $resultado['id'];
-        header('Location:painel.php');
+
+        header('Location:painel.php?cadastrado=nao');
     }
     else
     {

@@ -31,7 +31,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=h1, initial-scale=1.0">
     <title>Editar Elementos</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../CSS/editar.css">
 </head>
 <body>
     <h1>Editar Item</h1>
