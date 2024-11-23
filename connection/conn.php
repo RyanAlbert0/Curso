@@ -9,25 +9,26 @@ $senha = '';
 
 // Criar conexão com banco de dados
 
-$mysqli = new mysqli($servidor,$user,$senha)
+$mysqli = new mysqli($servidor,$user,$senha);
 
 // Verificar a conexão
 
-if ($mysqli -> error){
-    die('Falha ao conectar'.$mysqli->error);}
+if ($mysqli -> error)
+{
+    die('Falha ao conectar'.$mysqli->error);
+}
 
-$sql_check_db = "SHOW DATABASES LIKE '$banco_de_dados"
-$resultado = $mysqli->query('$sql_check_db')
-
+$sql_check_db = "SHOW DATABASES LIKE '$banco_de_dados'";
+$resultado = $mysqli->query($sql_check_db);
 if ($resultado->num_rows == 0){
-
     $sql_codigo = "CREATE DATABASE '$banco_de_dados'";
     if($mysqli->query($sql_codigo) === TRUE){
 
-        echo("Banco de dados criado com sucesso");}
-        else{
-            die("Erro ao criar o banco de dados" . $mysqli->error);
-        }
+        echo("Banco de dados criado com sucesso");
+    }
+    else {
+        die("Erro ao criar o banco de dados" . $mysqli->error);
+    }
 
 }
 else{
@@ -62,7 +63,7 @@ $tabelas = [
         telefone VARCHAR(15) NOT NULL,
         data_nasc DATE NOT NULL,
         cpf VARCHAR(11) NOT NULL,
-        cep VARCHAR(8) NO NULL
+        cep VARCHAR(8) NO NULL)
         ",
     "vendas" =>"
     CREATE TABLE vendas(
@@ -75,16 +76,22 @@ $tabelas = [
         "
 ];
 
-foreach($tabelas as $nome =>sql)
-{
-    if ($mysqli->query($sql) === TRUE){
-        echo "Tabela '$nome' criada com sucesso.";
+foreach ($tabelas as $nome =>$sql){
+    $sql_check_table = "SHOW TABLES LIKE '$nome'";
+    $resultado = $mysqli->query('$sql_check_table');
+    if ($resultado->num_rows == 0){
+        if ($mysqli->query($sql) === TRUE){
+            echo "Tabela '$nome' criada com sucesso.";
+      }
+      else{
 
+         echo "Erro ao criar a tabela '$nome' : ".$mysqli->error."\n";
+    }
     }
     else{
-
-        echo "Erro ao criar a tabela '$nome' : ".$mysqli->error."\n"
+        echo "Tabela '$nome' já existe<br>";
     }
 }
 
-$mysqli->close();
+// $mysqli->close();
+?>
