@@ -78,7 +78,7 @@ $tabelas = [
 
 foreach ($tabelas as $nome =>$sql){
     $sql_check_table = "SHOW TABLES LIKE '$nome'";
-    $resultado = $mysqli->query('$sql_check_table');
+    $resultado = $mysqli->query($sql_check_table);
     if ($resultado->num_rows == 0){
         if ($mysqli->query($sql) === TRUE){
             echo "Tabela '$nome' criada com sucesso.";

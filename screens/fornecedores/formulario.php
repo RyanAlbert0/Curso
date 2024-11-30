@@ -7,18 +7,18 @@
 </head>
 <body>
     <main>
-        <h1>Cadastrar Funcionário</h1>;
-        <form action="../../db/criar_fornecedor.php" method="post">;
+        <h1>Cadastrar Fornecedor</h1>
+        <form action="../../db/criar_fornecedor.php" method="post">
             <div>
                 <label for="nome">nome</label>
-                <input type="text" nome="nome" id="nome" required>;
+                <input type="text" nome="nome" id="nome" required>
             </div>
             <div>
-                <label for="cidade">nome</label>
-                <input type="text" nome="cidade" id="nome" required>;
+                <label for="cidade">cidade</label>
+                <input type="text" nome="cidade" id="cidade" required>
             </div>
             <div>
-                <button type="submit">Cadastrar</button>;
+                <button type="submit">Cadastrar</button>
                 <a href="fornecedores_painel.php">Voltar</a>
             </div>
     
