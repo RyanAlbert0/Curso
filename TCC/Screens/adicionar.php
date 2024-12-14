@@ -5,9 +5,15 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $nome = $_POST['nome'];
+        $resenha = $_POST['resenha'];
+        $genero = $_POST['genero'];
+        $tamanho = $_POST['tamanho'];
+        $lancamento = $_POST['lancamento'];
+        $preco = $_POST['preco'];
         $quantidade = $_POST['quantidade'];
+        $plataforma = $_POST['plataforma'];
 
-        $sql_codigo = "INSERT INTO itens (nome, quantidade, id_user) VALUES ('$nome', '$quantidade', '$id') ";
+        $sql_codigo = "INSERT INTO jogos (nome, resenha, genero, tamanho, lancamento, preco, quantidade, plataforma, id_usuarios) VALUES ('$nome', '$resenha', '$genero', '$tamanho', '$lancamento', '$preco', '$quantidade', '$plataforma', '$id') ";
 
         if($mysqli->query($sql_codigo) === TRUE){
             header('Location: painel.php');
@@ -31,8 +37,20 @@
     <form action="" method='post'>
         <label for="">Nome</label>
         <input type="text" name='nome' required id='input1'>
+        <label for="">Resenha</label>
+        <input type="text" name='resenha' required id='input2'>
+        <label for="">Gênero</label>
+        <input type="text" name='genero' required id='input3'>
+        <label for="">Tamanho</label>
+        <input type="text" name='tamanho' required id='input4'>
+        <label for="">Lançamento</label>
+        <input type="text" name='lancamento' required id='input5'>
+        <label for="">Preço</label>
+        <input type="number" name='preco' required id='input6'>
         <label for="">Quantidade</label>
-        <input type="number" name='quantidade' required id='input2'>
+        <input type="number" name='quantidade' required id='input7'>
+        <label for="">Plataforma</label>
+        <input type="text" name='plataforma' required id='input8'>
 
         <input type="submit" value='Save'>
     </form>
