@@ -4,25 +4,29 @@
     if(!isset($_SESSION)){
         header("location: login.php?noaccount");
     };
-    $id = $_SESSION['id'];
-    $sql_codigo_usuario = "SELECT * FROM usuarios WHERE id='$id'";
-    $resultado_nome = $mysqli->query($sql_codigo_usuario);
-    $nome_usuario = $resultado_nome->fetch_assoc();
-    $nome = $nome_usuario['nome'];
+    // $id = $_SESSION['id'];
+    
+    // $resultado_nome = $mysqli->query($sql_codigo_usuario);
+    // $nome_usuario = $resultado_nome->fetch_assoc();
+    // $nome = $nome_usuario['nome'];
 
-    // if($_GET['cadastrado'] == 'sim'){
-    //     $nome = $_SESSION['nome'];
-    //     $sql_codigo_usuario = "SELECT id FROM usuarios WHERE nome = '$nome'";
-    //     $resultado_id = $mysqli->query($sql_codigo_usuario);
-    //     $conteudo = $resultado_id->fetch_assoc();
-    //     $id = $conteudo['id'];}
-    //     else{
-    //         $id = $_SESSION['id'];
-            
-    //         $resultado_nome = $mysqli->query($sql_codigo_usuario);
-    //         $nome_usuario = $resultado_nome->fetch_assoc();
-    //             $nome = $nome_usuario['nome'];
-    //     }
+    if($_GET['cadastrado'] == 'sim'){
+        $nome = $_SESSION['nome'];
+        $sql_codigo_usuario = "SELECT id FROM usuarios WHERE nome = '$nome'";
+        $resultado_id = $mysqli->query($sql_codigo_usuario);
+        $conteudo = $resultado_id->fetch_assoc();
+        $id = $conteudo['id'];
+    }
+    else if ($_GET['cadastrado'] == 'erro'){
+
+    }
+    else{
+        $id = $_SESSION['id'];
+        $sql_codigo_usuario = "SELECT * FROM usuarios WHERE id='$id'";
+        $resultado_nome = $mysqli->query($sql_codigo_usuario);
+        $nome_usuario = $resultado_nome->fetch_assoc();
+        $nome = $nome_usuario['nome'];
+    }
 
     
     $sql_codigo = "SELECT * FROM jogos WHERE id_usuarios='$id'";
@@ -36,6 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo da EZ's Store</title>
+    <link rel="stylesheet" href="painel.css">
 </head>
 <body>
     
@@ -48,10 +53,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wishlist</title>
-    <link rel="stylesheet" href="../CSS/painel.css">
+    <link rel="stylesheet" href="painel.css">
 </head>
 <body>
-<h1>Carrinho - <?php echo $nome ?></h1>
+<h1>Jogos cadastrador por - <?php echo $nome ?></h1>
     <main class="container">
         <table>
             <tr class='cabecalho'>
@@ -85,7 +90,7 @@
             
             ?>
             <tr>
-                <td colspan='4' class='adic'>
+                <td colspan='10' class='adic'>
                     <?php
                     echo '<a type="submit" class="add_txt" href="adicionar.php">+</a>'
                     ?>

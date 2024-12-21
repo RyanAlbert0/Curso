@@ -30,11 +30,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=h1, initial-scale=1.0">
     <title>Adicionar Elementos</title>
-    <link rel="stylesheet" href="../CSS/adicionar.css">
+    <link rel="stylesheet" href="adicionar.css">
 </head>
 <body>
+    <div class='background'>
     <h1>Adicionar Item</h1>
-    <form action="" method='post'>
+    <form action="" method='post' class="infos">
         <label for="">Nome</label>
         <input type="text" name='nome' required id='input1'>
         <label for="">Resenha</label>
@@ -52,8 +53,9 @@
         <label for="">Plataforma</label>
         <input type="text" name='plataforma' required id='input8'>
 
-        <input type="submit" value='Save'>
+        <input type="submit" value='Save' class="butaosubmit">
     </form>
     <a href="painel.php"> Voltar </a>
+    </div>
 </body>
 </html>

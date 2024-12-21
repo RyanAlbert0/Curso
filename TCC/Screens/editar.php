@@ -11,18 +11,18 @@
     $plataforma = $_POST['plataforma'];
     $id = $_GET['id'];
 
-    $sql_codigo = "UPDATE jogos SET nome = '$nome', resenha='$resenha', genero='$genero', tamanho='$tamanho', lancamento='$lancamento', preco='$preco', quantidade='$quantidade', plataforma='$plataforma' WHERE id ='$id'";
-    // $sql_codigo = "UPDATE fornecedores SET nome='$nome', cidade='$cidade' WHERE id='$id'";
+    $sql_codigo = "UPDATE jogos SET nome = '$nome', resenha='$resenha', genero='$genero', tamanho='$tamanho', lancamento='$lancamento', preco='$preco', quantidade='$quantidade', plataforma='$plataforma' WHERE jogos.id ='$id'";
+
 
     var_dump($sql_codigo);
     $resultado = $mysqli->query($sql_codigo);
     var_dump($resultado);
-    // if ($resultado === TRUE){
-    //     header('Location: painel.php');
-    // }
-    // else {
-    //     header('Location: painel.php?erro');
+    if ($resultado === TRUE){
+        header('Location: painel.php');
+    }
+    else {
+        header('Location: painel.php?erro');
 
-    // }
+    }
 
 ?>
